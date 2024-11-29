@@ -15,12 +15,18 @@ namespace DonateSomething.Maui.Services
             {
                 new Organization
                 {
-                    Id = 1, Name = "OneOrganization", Budget = 100000
+                    Id = 1, 
+                    Name = "OneOrganization", 
+                    CountryOfOrigin = "Bangladesh",
+                    Budget = 100000
                 },
 
                 new Organization
                 {
-                    Id = 2, Name = "TwoOrganization", Budget = 200000
+                    Id = 2, 
+                    Name = "TwoOrganization",
+                    CountryOfOrigin = "Canada",
+                    Budget = 200000
                 }
             };
         }

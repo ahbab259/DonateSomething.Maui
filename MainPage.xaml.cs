@@ -1,25 +1,18 @@
-﻿namespace DonateSomething.Maui
+﻿using DonateSomething.Maui.ViewModels;
+
+namespace DonateSomething.Maui
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
-        public MainPage()
+        //private readonly OrganizationListViewModel _orgListViewModel;
+        public MainPage(OrganizationListViewModel orgListViewModel)
         {
             InitializeComponent();
+            //this._orgListViewModel = orgListViewModel;
+            BindingContext = orgListViewModel;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+       
     }
 
 }

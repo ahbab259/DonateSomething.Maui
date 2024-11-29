@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DonateSomething.Maui.Services;
+using DonateSomething.Maui.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace DonateSomething.Maui
 {
@@ -14,10 +16,9 @@ namespace DonateSomething.Maui
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            builder.Services.AddSingleton<OrganizationService>();
+            builder.Services.AddSingleton<OrganizationListViewModel>();
+            builder.Services.AddSingleton<MainPage>();
 
             return builder.Build();
         }

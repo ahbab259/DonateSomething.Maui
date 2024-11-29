@@ -13,13 +13,13 @@ namespace DonateSomething.Maui.ViewModels
 {
     public partial class OrganizationListViewModel : BaseViewModel
     {
-        private readonly OrganizationService orgService;
+        private readonly OrganizationService _orgService;
         public ObservableCollection<Organization> Organizations { get; private set; } = new ObservableCollection<Organization>();
 
         public OrganizationListViewModel(OrganizationService orgService)
         {
             Title = "Organization List";
-            this.orgService = orgService;
+            this._orgService = orgService;
         }
 
         [RelayCommand]
@@ -34,7 +34,7 @@ namespace DonateSomething.Maui.ViewModels
                     Organizations.Clear();
                 }
 
-                var orgs = orgService.GetOrganizations();
+                var orgs = _orgService.GetOrganizations();
 
                 foreach (var org in orgs)
                 {
