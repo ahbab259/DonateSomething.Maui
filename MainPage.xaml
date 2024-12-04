@@ -6,23 +6,35 @@
              xmlns:viewmodel ="clr-namespace:DonateSomething.Maui.ViewModels"
              x:DataType="viewmodel:OrganizationListViewModel"
              Title="{Binding Title}">
-
     <Grid ColumnDefinitions="*, *" ColumnSpacing="5" RowDefinitions="*, Auto">
-        <CollectionView Grid.ColumnSpan="2" ItemsSource="{Binding Organizations}" SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Organization">
-                    <Frame HeightRequest="90">
-                        <HorizontalStackLayout Padding="10" Spacing="5">
-                            <Label Text="{Binding Name}"></Label>
-                            <Label Text="{Binding CountryOfOrigin}"></Label>
-                        </HorizontalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Button Text="Get Organizations" Command="{Binding GetOrganizationListCommand}" IsEnabled="{Binding isNotLoading}" Grid.Row="1" Grid.Column="0">
-            
-        </Button>
+        <RefreshView Grid.ColumnSpan="2"
+            Command="{Binding GetOrganizationListCommand}"
+            IsRefreshing="{Binding isRefreshing}">
+            <CollectionView ItemsSource="{Binding Organizations}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Organization">
+                        <Grid Padding="5">
+                            <Frame HeightRequest="90" BackgroundColor="Yellow">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="" CommandParameter=""/>
+                                </Frame.GestureRecognizers>
+                                <HorizontalStackLayout Padding="10" Spacing="5">
+                                    <Label Text="{Binding Name}" TextColor="Blue"></Label>
+                                    <Label Text="{Binding CountryOfOrigin}" TextColor="Blue"></Label>
+                                </HorizontalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        
+        
+        <Button Text="Get Organizations" Command="{Binding GetOrganizationListCommand}" IsEnabled="{Binding isNotLoading}" Grid.Row="1" Grid.Column="0" Margin="40"/>
+
     </Grid>
 
 </ContentPage>
+
+
+<!--Command="{Binding GetOrganizationListCommand}"-->

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace DonateSomething.Maui.ViewModels
 {
@@ -21,6 +22,8 @@ namespace DonateSomething.Maui.ViewModels
             Title = "Organization List";
             this._orgService = orgService;
         }
+
+        public bool isRefreshing { get; set; }
 
         [RelayCommand]
         async Task GetOrganizationListAsync()
@@ -50,6 +53,7 @@ namespace DonateSomething.Maui.ViewModels
             finally
             {
                 IsLoading = false;
+                isRefreshing = false;
             }
         }
     }
