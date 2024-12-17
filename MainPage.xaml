@@ -16,7 +16,7 @@
                         <Grid Padding="5">
                             <Frame HeightRequest="90" BackgroundColor="Yellow">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="" CommandParameter=""/>
+                                    <TapGestureRecognizer Command="{Binding Source = {RelativeSource AncestorType={x:Type viewmodel:OrganizationListViewModel}}, Path=GetOrganizationDetailsCommand}" CommandParameter="{Binding .}"/>
                                 </Frame.GestureRecognizers>
                                 <HorizontalStackLayout Padding="10" Spacing="5">
                                     <Label Text="{Binding Name}" TextColor="Blue"></Label>

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
+using DonateSomething.Maui.Views;
 
 namespace DonateSomething.Maui.ViewModels
 {
@@ -55,6 +56,15 @@ namespace DonateSomething.Maui.ViewModels
                 IsLoading = false;
                 isRefreshing = false;
             }
+        }
+        [RelayCommand]
+        async Task GetOrganizationDetails(Organization org)
+        {
+            if(org == null) return;
+            await Shell.Current.GoToAsync(nameof(OrganizationDetails), true, new ShellNavigationQueryParameters()
+            {
+                { nameof(Organization), org}
+            });
         }
     }
 }
